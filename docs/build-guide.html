@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 3Dウェブサイト 制作ガイド — 動画手順の整理＋遊牧民ラボ向けアレンジ</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdfbf6; --surface:#ffffff; --ink:#0c2b33; --soft:#3c5b62; --mute:#6f8a90;
+  --lagoon:#129ca0; --lagoon-d:#0b626e; --lagoon-l:#eafaf8; --coral:#ff7a59; --coral-d:#f0603d;
+  --sun:#ffc857; --sand:#f3e9d6; --line:#e7ded0;
+  --grad:linear-gradient(120deg,#ffc857,#ff9b76,#ff7a59);
+  --grads:linear-gradient(135deg,#28bdb8,#0b626e);
+  --r:18px; --sh:0 14px 36px rgba(7,59,76,.10);
+}
+[data-theme="dark"]{
+  --bg:#08323b; --surface:#0d3d47; --ink:#eafaf8; --soft:#b9d9da; --mute:#7fb0b2;
+  --lagoon-l:#0a4d59; --sand:#0a4350; --line:#16505c;
+  --sh:0 14px 36px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:260px 1fr;max-width:1180px;margin:0 auto;gap:0}
+/* sidebar */
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:28px 20px;border-right:1px solid var(--line);background:var(--surface)}
+aside .brand{font-family:"Zen Maru Gothic";font-weight:700;font-size:1.15rem;display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem}
+aside .sub{font-size:.72rem;color:var(--mute);letter-spacing:.1em;margin-bottom:1.4rem}
+aside nav a{display:block;padding:.5rem .7rem;border-radius:10px;color:var(--soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:.2s}
+aside nav a:hover{background:var(--lagoon-l);color:var(--lagoon-d)}
+aside nav a.step::before{content:attr(data-n);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--grads);color:#fff;font-size:.72rem;font-weight:700;margin-right:.5rem;font-family:"Outfit"}
+.toggle{margin-top:1.4rem;width:100%;padding:.6rem;border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:10px;cursor:pointer;font:inherit;font-size:.85rem}
+/* main */
+main{padding:44px clamp(20px,4vw,56px) 90px;min-width:0}
+.eyebrow{font-family:"Outfit";font-weight:700;letter-spacing:.18em;font-size:.72rem;color:var(--lagoon);text-transform:uppercase}
+h1{font-family:"Zen Maru Gothic";font-size:clamp(1.7rem,1.2rem+2vw,2.6rem);line-height:1.25;margin:.3em 0 .4em}
+h2{font-family:"Zen Maru Gothic";font-size:1.5rem;margin:2.4em 0 .6em;padding-top:.4em;display:flex;align-items:center;gap:.6rem}
+h2 .num{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--grads);color:#fff;font-family:"Outfit";font-weight:800;font-size:1.1rem;flex:none}
+h3{font-size:1.1rem;margin:1.4em 0 .4em;color:var(--lagoon-d)}
+p{color:var(--soft)}
+.lead{font-size:1.08rem;color:var(--soft);max-width:60ch}
+a.link{color:var(--coral-d);font-weight:600;word-break:break-all}
+strong{color:var(--ink);font-weight:700}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.5rem;box-shadow:var(--sh);margin:1rem 0}
+.tip{border-left:4px solid var(--coral);background:linear-gradient(90deg,rgba(255,122,89,.08),transparent);padding:1rem 1.2rem;border-radius:0 12px 12px 0;margin:1rem 0}
+.tip b{color:var(--coral-d)}
+.free{border-left:4px solid var(--lagoon);background:linear-gradient(90deg,rgba(18,156,160,.08),transparent);padding:1rem 1.2rem;border-radius:0 12px 12px 0;margin:1rem 0}
+.free b{color:var(--lagoon-d)}
+ul{padding-left:1.2em}li{margin:.3em 0;color:var(--soft)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem;background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--sh)}
+th,td{padding:.7rem .9rem;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--lagoon-l);color:var(--lagoon-d);font-weight:700;font-size:.85rem}
+td .pay{color:var(--coral-d);font-weight:700}td .ok{color:var(--lagoon-d);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.chip{font-size:.78rem;font-weight:600;padding:.3em .8em;border-radius:99px;background:var(--lagoon-l);color:var(--lagoon-d)}
+.chip.c{background:#fff0eb;color:var(--coral-d)}
+pre{background:#06262e;color:#d7f5f2;padding:1rem 1.2rem;border-radius:12px;overflow-x:auto;font-size:.84rem;line-height:1.7;margin:.8rem 0}
+.flow{width:100%;height:auto;margin:1.2rem 0}
+.kicker{font-weight:700;color:var(--ink)}
+.me{background:var(--grads);color:#fff;border-radius:var(--r);padding:1.6rem 1.7rem;margin:1.2rem 0;box-shadow:var(--sh)}
+.me h3{color:#fff}.me p,.me li{color:#dff6f4}.me b{color:#fff}
+.foot{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--mute)}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}aside nav{display:flex;flex-wrap:wrap;gap:.2rem}aside nav a{font-size:.82rem;padding:.4rem .6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside>
+  <div class="brand">🦭 制作ガイド</div>
+  <div class="sub">AI × 3D WEBSITE</div>
+  <nav>
+    <a href="#intro">この動画でできること</a>
+    <a href="#tools">使うツール早見表</a>
+    <a href="#flow">全体フロー</a>
+    <a class="step" data-n="0" href="#s0">参考さがし</a>
+    <a class="step" data-n="1" href="#s1">土台を並行ビルド</a>
+    <a class="step" data-n="2" href="#s2">3Dモデル(GLB)</a>
+    <a class="step" data-n="3" href="#s3">画像素材</a>
+    <a class="step" data-n="4" href="#s4">ヒーロー動画</a>
+    <a class="step" data-n="5" href="#s5">動画ホスティング</a>
+    <a class="step" data-n="6" href="#s6">組み立て</a>
+    <a class="step" data-n="7" href="#s7">公開</a>
+    <a href="#arrange">遊牧民ラボ向けアレンジ</a>
+    <a href="#better">羊の執事のより良い案</a>
+    <a href="#next">次のアクション</a>
+  </nav>
+  <button class="toggle" onclick="document.documentElement.toggleAttribute('data-theme');this.textContent=document.documentElement.hasAttribute('data-theme')?'☀ ライトに戻す':'🌙 ダークにする'">🌙 ダークにする</button>
+</aside>
+
+<main>
+  <span class="eyebrow">YouTube手順の日本語整理</span>
+  <h1>AIだけで「高級感ある3Dウェブサイト」を<br>10〜15分で作る手順</h1>
+  <p class="lead">元動画：<a class="link" href="https://youtu.be/sQoqCl3700I">I Built a $5,000 AI Health Ring Website in 10 Minutes</a>（Shreyas Raj / 17分）。<br>動画の手順をそのまま日本語化し、遊牧民ラボ向けのアレンジと私（羊の執事）の改善案を添えました。</p>
+
+  <section id="intro">
+  <h2>この動画でできること</h2>
+  <p>「商品（動画では健康リング）を主役にした、代理店なら数千ドル取るような3D・高級感のあるランディングページ」を、<strong>AIツールの組み合わせ</strong>でほぼ無料・短時間で作り、ネットに公開するまでを一気通貫で見せています。</p>
+  <div class="card">
+    <span class="kicker">肝になる発想</span>
+    <ul>
+      <li><strong>「待ち時間の並行作業」</strong>：AIにサイトの土台を作らせている<em>間に</em>、3Dモデルや画像・動画素材を作る。</li>
+      <li><strong>素材はAIで作り、組み立てもAIに任せる</strong>：人は「指示」と「素材集め」だけ。</li>
+      <li><strong>3Dは GLB、動画は外部ホスティング</strong>：Webで軽く動かすための定石。</li>
+    </ul>
+  </div>
+  </section>
+
+  <section id="tools">
+  <h2>使うツール早見表</h2>
+  <p>動画で使うツールと、お金をかけない<strong>無料代替</strong>をまとめました。</p>
+  <table>
+    <tr><th>用途</th><th>動画のツール</th><th>無料の代替</th></tr>
+    <tr><td>サイトの土台ビルド</td><td class="pay">Claude Code</td><td class="ok">Google Antigravity（無料IDE）</td></tr>
+    <tr><td>3Dモデル生成</td><td class="pay">Meshy AI（無料枠あり）</td><td class="ok">Tripo / Meshy無料枠</td></tr>
+    <tr><td>画像生成</td><td class="pay">Magnific / ChatGPT画像</td><td class="ok">Google Flow ＋ Nano Banana Pro</td></tr>
+    <tr><td>ヒーロー動画</td><td class="pay">Google Flow（VEO 3.1）</td><td class="ok">Nano Banana Pro の動画機能</td></tr>
+    <tr><td>動画ホスティング</td><td class="ok">Cloudinary（無料）</td><td class="ok">Cloudinary（無料）</td></tr>
+    <tr><td>公開（デプロイ）</td><td class="ok">Netlify ＋ GitHub</td><td class="ok">Netlify ＋ GitHub</td></tr>
+  </table>
+  <div class="tip"><b>無料プロンプト集（動画提供）</b>：画像・動画の「ワンショット プロンプト」入りの配布ドキュメントが概要欄にあります → <a class="link" href="https://docs.google.com/document/d/17yaHtrP9n-_f-9kc9ljEqgycRswjAqSkU0ifHI8O38g/edit">Google ドキュメント</a></div>
+  </section>
+
+  <section id="flow">
+  <h2>全体フロー</h2>
+  <svg class="flow" viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="制作フロー図">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#28bdb8"/><stop offset="1" stop-color="#0b626e"/></linearGradient></defs>
+    <line x1="60" y1="60" x2="840" y2="60" stroke="#cfe7e6" stroke-width="3" stroke-dasharray="6 7"/>
+    <!-- top row -->
+    <g font-family="Zen Kaku Gothic New" font-size="13" fill="#0c2b33" text-anchor="middle">
+      <circle cx="70" cy="60" r="22" fill="url(#g)"/><text x="70" y="65" fill="#fff" font-size="16">①</text><text x="70" y="100">参考さがし</text>
+      <circle cx="240" cy="60" r="22" fill="url(#g)"/><text x="240" y="65" fill="#fff" font-size="16">②</text><text x="240" y="100">土台を並行ビルド</text>
+      <circle cx="410" cy="60" r="22" fill="#ff7a59"/><text x="410" y="65" fill="#fff" font-size="16">③</text><text x="410" y="100">3Dモデル(GLB)</text>
+      <circle cx="560" cy="60" r="22" fill="#ff7a59"/><text x="560" y="65" fill="#fff" font-size="16">④</text><text x="560" y="100">画像16:9</text>
+      <circle cx="690" cy="60" r="22" fill="#ff7a59"/><text x="690" y="65" fill="#fff" font-size="16">⑤</text><text x="690" y="100">動画ループ</text>
+      <circle cx="830" cy="60" r="22" fill="url(#g)"/><text x="830" y="65" fill="#fff" font-size="16">⑥</text><text x="830" y="100">動画ホスト</text>
+    </g>
+    <!-- arrow to bottom -->
+    <path d="M830 130 Q830 160 700 160 L200 160 Q70 160 70 175" fill="none" stroke="#cfe7e6" stroke-width="3"/>
+    <g font-family="Zen Kaku Gothic New" font-size="13" fill="#0c2b33" text-anchor="middle">
+      <circle cx="300" cy="195" r="22" fill="url(#g)"/><text x="300" y="200" fill="#fff" font-size="16">⑦</text><text x="430" y="200" text-anchor="start">素材をまとめてAIに渡し「組み立て」</text>
+      <circle cx="760" cy="195" r="22" fill="#ffc857"/><text x="760" y="200" fill="#0c2b33" font-size="16">⑧</text><text x="800" y="200" text-anchor="start">公開</text>
+    </g>
+  </svg>
+  <p class="lead" style="font-size:.95rem">③④⑤（珊瑚色＝素材づくり）は、②でAIがサイトを作っている<strong>裏で並行</strong>して進めるのがコツです。</p>
+  </section>
+
+  <section id="s0">
+  <h2><span class="num">0</span>参考さがし（インスピレーション）</h2>
+  <p><strong>Pinterest / Dribbble / Landbook</strong> で「（商品名）website」のように検索し、作りたい雰囲気の参考を<strong>1枚</strong>決めます（例：health ring website）。</p>
+  <div class="chips"><span class="chip">Pinterest</span><span class="chip">Dribbble</span><span class="chip">Landbook</span></div>
+  <p>この1枚が、後の3Dモデル生成の「元画像」にもなります。</p>
+  </section>
+
+  <section id="s1">
+  <h2><span class="num">1</span>サイトの土台を「並行ビルド」</h2>
+  <p>Claude Code に<strong>「ワンショット構築プロンプト」</strong>（サイト全体を一発指示する長いプロンプト）を貼り、モデルを sonnet にして実行。<strong>動画では、ここで一旦走らせておき、その裏で素材を作ります。</strong></p>
+  <div class="free"><b>無料でやるなら</b>：Google の <strong>Antigravity</strong>（無料のAI IDE）。pricing から無料プランで agentic 開発ができます。</div>
+  <div class="tip"><b>ポイント</b>：素材が揃う前に土台を走らせておくと、戻ってきた頃にはサイトの骨格ができている＝時短になります。</div>
+  </section>
+
+  <section id="s2">
+  <h2><span class="num">2</span>3Dモデルを作る（GLBで書き出し）</h2>
+  <p><strong>Meshy AI</strong> に Step0 の参考画像を貼り付け → <strong>画像から3Dモデルを生成</strong>（約20クレジット）。生成後に <strong>HDテクスチャ</strong>を当てると、ツヤのある高級感のある仕上がりに。</p>
+  <ul>
+    <li>書き出し形式は <strong>GLB</strong>（Web・ブラウザ・スマホで最も軽く滑らかに動く定番形式）。</li>
+    <li>無料代替：<strong>Tripo</strong>、または Meshy の無料枠（Meshy 5）。</li>
+  </ul>
+  </section>
+
+  <section id="s3">
+  <h2><span class="num">3</span>画像素材を作る（16:9 で）</h2>
+  <p>背景・ライフスタイル用の<strong>プレミアムな画像</strong>を生成。動画では配布プロンプト集（mountain dawn、portrait lifestyle card など）を使い、<strong>各4枚ずつ・16:9の横長</strong>で出します。</p>
+  <div class="free"><b>無料でやるなら</b>：<strong>Google Flow ＋ Nano Banana Pro</strong>。アスペクト比を16:9にして「4枚作って」と指示。毎回確認が出ないよう「クレジット確認＝しない」に設定すると楽。</div>
+  </section>
+
+  <section id="s4">
+  <h2><span class="num">4</span>ヒーロー動画を作る（8秒ループ）</h2>
+  <p>Step3の画像の1枚を使い、<strong>開始フレームと終了フレームに「同じ画像」を指定</strong>して、<strong>8秒のループ動画</strong>を生成（動画では Google Flow の <strong>VEO 3.1 light</strong>）。これでヒーローが滑らかに無限ループします。</p>
+  <div class="tip"><b>合言葉</b>：「同じ画像を開始フレーム＆終了フレームに。8秒のループで。」</div>
+  </section>
+
+  <section id="s5">
+  <h2><span class="num">5</span>動画をホスティング（Cloudinary）</h2>
+  <p><strong>動画をサイトに直接置くと読み込みが激重になる</strong>ので避けます。<strong>Cloudinary</strong>（無料・Gmailで登録）に動画をアップ → <strong>ストリーミングURL</strong>を取得して、そのURLをサイトで使います。</p>
+  </section>
+
+  <section id="s6">
+  <h2><span class="num">6</span>素材をまとめて「組み立て」をAIに依頼</h2>
+  <p>生成した画像を1つのフォルダ（例：<code>ring-assets</code>）にまとめ、Claude Code にこう指示します。</p>
+  <pre>このフォルダの画像をサイトに使って：（フォルダのパス）
+3Dモデルはこの GLB ファイルを使って：（GLBのパス）
+ヒーロー動画はこのURLを使って：（CloudinaryのURL）
+最後に表示崩れがないかテストしてから渡して。</pre>
+  <p>Claude Code はPC内のフォルダを読めるので、フォルダを指すだけで素材を正確に組み込みます。</p>
+  </section>
+
+  <section id="s7">
+  <h2><span class="num">7</span>公開（GitHub ＋ Netlify）</h2>
+  <p>Claude Code に <strong>GitHub MCP / Netlify MCP</strong> を接続（「GitHub/NetlifyのMCPを設定して」と頼んで認証するだけ）すれば、<strong>「GitHubにpushして、Netlifyにデプロイして公開URLちょうだい」</strong>でターミナル無しに公開できます。</p>
+  <div class="tip"><b>遊牧民ラボは準備済み</b>：GitHubリポジトリは作成済みなので、あとは Netlify 接続だけで最短公開できます。</div>
+  </section>
+
+  <section id="arrange" class="me">
+  <h3>🦭 遊牧民ラボ向けアレンジ（同じ手順を、私たちの世界観で）</h3>
+  <p>動画は「健康リング」でしたが、私たちは<strong>自作AIツール</strong>を主役にします。手順は同じで、置き換えるだけ：</p>
+  <ul>
+    <li><b>主役の3Dモデル</b> → リングの代わりに「アザラシ」や各ツールを象徴する小物を Meshy で3D化（または既存のSplineアザラシを継続）。</li>
+    <li><b>参考さがし</b> → Pinterest で「product landing page 3D」「resort web design」。配色は<b>モルディブ（ラグーン/サンド/珊瑚/サン）</b>固定。</li>
+    <li><b>画像・動画</b> → 16:9で「水・リゾート・アザラシ」のトーンに統一。ヒーロー動画は波が揺れる8秒ループ。</li>
+    <li><b>ワンショット構築プロンプト</b> → 遊牧民ラボのブランド（呼称・配色・アザラシ・Lenis/GSAP）を固定したテンプレにして、<b>ツールごとのLPを量産</b>。</li>
+  </ul>
+  </section>
+
+  <section id="better">
+  <h2>🐑 羊の執事の「より良い案」</h2>
+  <p>動画の手順は優秀ですが、旦那様の環境（自宅GPU・無料/ローカル志向・既存資産）に合わせると、もっと安く・速くできます。</p>
+  <div class="card">
+    <h3>① 3Dは <code>&lt;model-viewer&gt;</code> で（無料・透かし無し）</h3>
+    <p>Meshyで作ったGLBを、Google製の <strong>&lt;model-viewer&gt;</strong>（タグ1つで3D表示・回転・自動ライティング）で出すと、Splineの月額や透かしが不要。軽くてスマホでも滑らかです。</p>
+  </div>
+  <div class="card">
+    <h3>② 画像は自宅GPUでローカル生成も</h3>
+    <p>RTX 5060 Ti があるので、ComfyUI＋SDXL等で<strong>無料・無制限・ネット不要</strong>に画像を量産できます（枚数を気にせず試せる）。仕上げだけ Nano Banana という併用も◎。</p>
+  </div>
+  <div class="card">
+    <h3>③ 短いループ動画は Netlify 直置きでも可</h3>
+    <p>8秒・軽量に圧縮（WebM/H.264, 1〜2MB）すれば、Cloudinaryを挟まずNetlify直置きでも十分軽い。<strong>依存サービスを1つ減らせます</strong>（重い/長い動画ならCloudinary推奨）。</p>
+  </div>
+  <div class="card">
+    <h3>④ 「ワンショット構築プロンプト」をテンプレ資産化</h3>
+    <p>遊牧民ラボの規約（ブランド・配色・フォント・Lenis/GSAP・アクセシビリティ）を1枚のテンプレにして、毎回それを土台に走らせる。<strong>2本目以降のツールLPが一気に速くなります</strong>。</p>
+  </div>
+  <div class="card">
+    <h3>⑤ GitHubは作成済み → 公開導線が最短</h3>
+    <p>すでにリポジトリがあるので、Netlifyを繋げば「pushしたら自動で本番更新」に。動画の⑦⑧を1回設定すれば以後は自動です。</p>
+  </div>
+  </section>
+
+  <section id="next">
+  <h2>次のアクション</h2>
+  <p>旦那様の合図で、私はこの手順に沿って動けます。おすすめの進め方：</p>
+  <ol>
+    <li>まず<strong>1ツール（例：音声入力）でテスト1本</strong>を、この手順で作る。</li>
+    <li>3Dは「Meshyで作る」か「既存Splineアザラシで行く」かを選ぶ。</li>
+    <li>画像生成は「自宅GPUローカル」か「Google Flow無料」かを選ぶ。</li>
+    <li>OKなら、残りのツールへ横展開＋Netlay公開。</li>
+  </ol>
+  <p>「より良い案」のどれを採用するか、または「動画そのまま通り」で行くか、教えていただければ着手します。</p>
+  </section>
+
+  <div class="foot">遊牧民ラボ 制作ガイド ／ 元動画の手順を整理＋アレンジ ／ made with Claude Code</div>
+</main>
+</div>
+</body>
+</html>
