@@ -36,7 +36,24 @@
 .hero-water { position: absolute; left: 0; right: 0; bottom: 0; height: 32%; z-index: -1; overflow: hidden; }
 .hero-water svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
 
-/* アザラシのマスコット（前面・浮遊・円形メダリオン） */
+/* スクロールで各セクションを旅するマスコット（body直下・固定） */
+#mascot {
+  position: fixed; right: clamp(1rem, 6vw, 7rem); bottom: clamp(3rem, 10vh, 8rem);
+  width: clamp(170px, 24vw, 360px); aspect-ratio: 1; z-index: 80; pointer-events: none;
+  will-change: transform, opacity;
+}
+#mascot img, #mascot model-viewer {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;
+  border: 4px solid rgba(255,255,255,.55);
+  box-shadow: 0 30px 60px rgba(7,59,76,.5), 0 0 0 14px rgba(255,255,255,.08);
+  background: var(--grad-deep);
+}
+#mascot img { animation: float-y 6.5s var(--ease) infinite; }
+#mascot::before { content:""; position:absolute; inset:-22px; border-radius:50%; border:2px dashed rgba(255,255,255,.35); animation: sway 9s var(--ease) infinite; }
+@media (prefers-reduced-motion: reduce){ #mascot img{ animation:none } #mascot::before{ animation:none } }
+@media (max-width: 880px){ #mascot{ width: 132px; right: 1rem; bottom: 1.2rem } }
+
+/* （旧）ヒーロー内アザラシ — 現在は #mascot に統合 */
 .hero-seal {
   position: absolute; z-index: 1; right: clamp(1rem, 6vw, 7rem); bottom: clamp(3rem, 10vh, 8rem);
   width: clamp(190px, 26vw, 380px); aspect-ratio: 1; pointer-events: none;

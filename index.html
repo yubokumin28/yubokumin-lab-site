@@ -17,6 +17,7 @@
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -38,6 +39,9 @@
   </div>
 </header>
 
+<!-- スクロールで各セクションを旅するアザラシ（GLBがあれば model-viewer、無ければ画像） -->
+<div id="mascot" aria-hidden="true"><img src="assets/seal/seal_medallion.png" alt="遊牧民ラボのアザラシ"></div>
+
 <!-- ===== ヒーロー ===== -->
 <section class="hero" data-parallax-scene>
   <!-- Spline 水・リゾートシーン（spline-hero.js が挿入） -->
@@ -53,10 +57,7 @@
     </div>
   </div>
 
-  <!-- アザラシのマスコット（リゾートの主役・前面に浮遊） -->
-  <div class="hero-seal parallax p-mid" id="heroSeal" aria-hidden="true">
-    <img src="assets/seal/seal_medallion.png" alt="遊牧民ラボのアザラシ">
-  </div>
+  <!-- アザラシは body 直下の #mascot へ（スクロールで各セクションを移動する） -->
 
   <div class="hero-inner">
     <span class="eyebrow reveal">Portfolio of an AI nomad</span>
@@ -259,5 +260,6 @@
 <script src="js/cursor.js" defer></script>
 <script src="js/spline-hero.js" defer></script>
 <script src="js/lp.js" defer></script>
+<script src="js/mascot.js" defer></script>
 </body>
 </html>
