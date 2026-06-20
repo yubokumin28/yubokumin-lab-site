@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>選択肢の違い & 画像ギャラリー — 遊牧民ラボ</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<style>
+:root{--bg:#fdfbf6;--surf:#fff;--ink:#0c2b33;--soft:#3c5b62;--lagoon:#129ca0;--lagoon-d:#0b626e;--coral:#ff7a59;--coral-d:#f0603d;--sun:#ffc857;--sand:#f3e9d6;--line:#e7ded0}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;padding:20px;max-width:760px;margin:0 auto}
+h1{font-family:"Zen Maru Gothic";font-size:1.5rem;margin:.2em 0}
+.sub{color:var(--lagoon-d);font-size:.9rem;margin-bottom:1.4rem}
+h2{font-family:"Zen Maru Gothic";font-size:1.2rem;margin:1.8em 0 .5em;display:flex;align-items:center;gap:.5rem}
+h2 .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#28bdb8,#0b626e);color:#fff;font-family:"Outfit";font-weight:700;font-size:.95rem}
+p{color:var(--soft);font-size:.95rem}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.6rem 0 0}
+.gal figure{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(7,59,76,.08)}
+.gal img{width:100%;display:block;aspect-ratio:auto}
+.gal figcaption{font-size:.78rem;color:var(--soft);padding:.5rem .7rem}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.2rem;margin:.6rem 0;box-shadow:0 8px 22px rgba(7,59,76,.08)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.2em .7em;border-radius:99px;background:#eafaf8;color:var(--lagoon-d);margin-bottom:.4rem}
+.tag.pay{background:#fff0eb;color:var(--coral-d)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.6rem}
+.ba .lbl{font-size:.74rem;font-weight:700;color:var(--soft);margin-bottom:.2rem}
+.ba .box{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sand)}
+.ba img{width:100%;display:block}
+.flat{width:100%;aspect-ratio:1;display:grid;place-items:center;background:var(--sand)}
+.flat img{width:80%;border-radius:50%;border:3px solid #fff;box-shadow:0 8px 20px rgba(7,59,76,.25)}
+model-viewer{width:100%;height:280px;background:linear-gradient(160deg,#cdeeee,#1aa0a4);border-radius:12px}
+.hint{font-size:.8rem;color:var(--coral-d);font-weight:700;margin-top:.3rem}
+.diagram{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.6rem;font-size:.85rem}
+.diagram .d{border:1px solid var(--line);border-radius:12px;padding:.8rem;background:var(--surf)}
+.diagram .d b{display:block;color:var(--ink)}
+.reco{background:linear-gradient(135deg,#28bdb8,#0b626e);color:#fff;border-radius:16px;padding:1.1rem 1.2rem;margin:1.4rem 0}
+.reco b{color:#fff}
+.foot{margin-top:2rem;font-size:.78rem;color:#6f8a90;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+</head>
+<body>
+<h1>🦭 選択肢の違い & 生成画像ギャラリー</h1>
+<div class="sub">スマホで指で触って確かめてください。特に②は実際に回せます。</div>
+
+<h2>自宅GPUで作った画像（タップで拡大）</h2>
+<p>全部、自宅のPCで無料生成。権利問題なし。文章を変えれば何枚でも作れます。</p>
+<div class="gal">
+  <figure><img src="assets/banners/hero-bg.png" alt=""><figcaption>① 夜明けラグーン（ヒーロー）</figcaption></figure>
+  <figure><img src="assets/banners/story-card.png" alt=""><figcaption>② 浜辺のノートPC（世界観）</figcaption></figure>
+  <figure><img src="assets/banners/profile.png" alt=""><figcaption>③ 海を望むデスク（プロフィール）</figcaption></figure>
+  <figure><img src="assets/banners/stats-bg.png" alt=""><figcaption>④ 深いラグーン（数字の背景）</figcaption></figure>
+</div>
+
+<h2><span class="n">①</span>生成画像をサイトに反映</h2>
+<div class="card">
+  <span class="tag">所要：すぐ（私の作業のみ）</span>
+  <p>今ヒーローは「Splineの3Dの海」。これを<b>実写級のラグーン</b>に替えたり、プロフィールやデータ背景に上の画像を差し込みます。「違い」はこんな感じ：</p>
+  <div class="ba">
+    <div><div class="lbl">今（Spline・CGの海）</div><div class="box"><img src="assets/shots/banners/construction.jpg" alt="CG風の例" style="filter:saturate(1.1)"></div></div>
+    <div><div class="lbl">反映後（実写ラグーン）</div><div class="box"><img src="assets/banners/hero-bg.png" alt="実写"></div></div>
+  </div>
+  <p style="margin-top:.5rem">→ 「作り物っぽさ」が減り、高級リゾートの実写感が出ます。元に戻すのも一瞬。</p>
+</div>
+
+<h2><span class="n">②</span>アザラシを3Dにする（GLB）</h2>
+<div class="card">
+  <span class="tag pay">所要：中（Meshyで3D化が必要・無料枠）</span>
+  <p>今のアザラシは「平面の絵」。3Dにすると<b>指でくるくる回せて、光の当たり方も本物</b>になります。下が実際の3D（指でドラッグ／スワイプしてみてください）：</p>
+  <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" camera-controls auto-rotate ar-status="not-presenting" alt="3Dの例（指で回せる）" exposure="1.1"></model-viewer>
+  <div class="hint">↑ これが3D。指で回ります。これをアザラシに置き換えるイメージ。</div>
+  <div class="ba" style="margin-top:.8rem">
+    <div><div class="lbl">今（平面の絵）</div><div class="flat"><img src="assets/seal/seal_medallion.png" alt=""></div></div>
+    <div><div class="lbl">3D化（回せる・立体）</div><div class="box" style="display:grid;place-items:center;aspect-ratio:1;background:linear-gradient(160deg,#cdeeee,#1aa0a4);color:#fff;font-weight:700">上のように<br>くるくる回る</div></div>
+  </div>
+</div>
+
+<h2><span class="n">③</span>もっと高品質に（FLUX）</h2>
+<div class="card">
+  <span class="tag pay">所要：大（約15GBの追加DL）</span>
+  <p>今の画像は <b>SDXL（epicrealism）</b>。十分綺麗です。FLUXという別モデルにすると、<b>細部や「画像内の文字」がさらに正確</b>になります。ただし：</p>
+  <div class="ba">
+    <div><div class="lbl">今のSDXL（風景は十分綺麗）</div><div class="box"><img src="assets/banners/story-card.png" alt=""></div></div>
+    <div><div class="lbl">FLUXの強み</div><div class="box" style="padding:.7rem;background:var(--surf);aspect-ratio:auto"><p style="font-size:.82rem;margin:0">・髪/布/文字など<b>細部がよりシャープ</b><br>・<b>15GBのDL</b>と少し遅い生成<br>・風景中心の今回は<b>差は小さめ</b></p></div></div>
+  </div>
+  <p style="margin-top:.5rem">→ 正直、今回のリゾート風景なら<b>SDXLで十分</b>。文字入り画像を多用するなら FLUX が効きます。</p>
+</div>
+
+<h2><span class="n">④</span>本番公開（Netlify）</h2>
+<div class="card">
+  <span class="tag">所要：すぐ</span>
+  <div class="diagram">
+    <div class="d"><b>今（一時リンク）</b>私のPCが起動している間だけ見える。URLも一時的。</div>
+    <div class="d"><b>公開後（Netlify）</b>PCを切っても、いつでも誰でも見える。固定URL。</div>
+  </div>
+  <p style="margin-top:.5rem">→ 人に見せる段階になったら公開。今はまだ作り込み中なので、後でもOK。</p>
+</div>
+
+<div class="reco">
+  <b>羊の執事のおすすめ順</b><br>
+  ① 画像を反映（すぐ効果が出る・無料）→ ② アザラシを3D（世界観が一気に映える）→ ④ 公開。<br>
+  ③ FLUX は「文字入り画像が必要になったら」でOK。
+</div>
+
+<div class="foot">遊牧民ラボ ／ 選択肢の違い比較 ／ スマホ確認用</div>
+</body>
+</html>

@@ -45,7 +45,8 @@
 <!-- ===== ヒーロー ===== -->
 <section class="hero" data-parallax-scene>
   <!-- Spline 水・リゾートシーン（spline-hero.js が挿入） -->
-  <div class="hero-stage" id="heroStage" data-scene="https://prod.spline.design/7PA5QTpluER3HI-s/scene.splinecode"></div>
+  <!-- ヒーロー背景は実写ラグーン画像（.hero の background）。Spline は廃止 -->
+  <span class="deco" style="left:0;right:0;bottom:0;height:30%;z-index:0;background:linear-gradient(0deg,#073b4c,transparent)" aria-hidden="true"></span>
   <!-- fallback（モバイル/低スペック/失敗時） -->
   <div class="hero-fallback" id="heroFallback" style="display:none">
     <span class="sun parallax p-soft"></span>
@@ -183,8 +184,8 @@
 <section class="section" id="profile" data-parallax-scene>
   <div class="wrap" style="display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,5vw,5rem);align-items:center">
     <div class="reveal from-left" style="position:relative">
-      <div style="background:var(--grad-lagoon);border-radius:var(--r-xl);padding:14% 10% 0;box-shadow:var(--sh-lg);overflow:hidden">
-        <img src="assets/chars/yubokumin-1.png" alt="遊牧民のアバター" class="scrollpop" style="width:100%;transform:translateY(var(--pop,0));transition:transform .2s var(--ease)">
+      <div style="border-radius:var(--r-xl);box-shadow:var(--sh-lg);overflow:hidden">
+        <img src="assets/banners/profile.png" alt="海を望むワークスペース" style="width:100%;display:block">
       </div>
       <span class="deco" style="bottom:-18px;right:-10px;width:96px" aria-hidden="true"><img src="assets/seal/seal_medallion.png" alt="" class="anim-float-soft"></span>
     </div>
@@ -203,7 +204,7 @@
 </section>
 
 <!-- ===== 実績サマリ（深い海・カウントアップ） ===== -->
-<section class="divider-deep" data-parallax-scene style="position:relative;overflow:hidden">
+<section class="divider-deep" data-parallax-scene style="position:relative;overflow:hidden;background:linear-gradient(rgba(7,59,76,.60),rgba(7,59,76,.74)), #073b4c url('assets/banners/stats-bg.png') center/cover">
   <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--sand-50)"/></svg></span>
   <div class="wrap center" style="padding-block:var(--sp-5)">
     <span class="eyebrow reveal" style="color:var(--lagoon-100)">By the numbers</span>
