@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# dependencies / build (将来用)
+node_modules/
+dist/
+.cache/
+
+# local dev / tunnel / temp
+.claude/launch.json
+*.log
+_cf-empty.yml
+_candidates/
+_ref/
+**/_sheet.html
+**/_sheet.png
+**/_preview.html

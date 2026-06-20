@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アザラシ建設 3Dサイト — 建設業に、AIの風を | 遊牧民ラボ</title>
+<meta name="description" content="3Dロボットアームが回る建設業向けランディングページ。建設×AI自動化を、海と現場の世界観で見せたWeb制作の実例です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/lp.css">
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/seal/seal_medallion.png" alt="" aria-hidden="true"><span>遊牧民ラボ<small>YUBOKUMIN LAB</small></span></a>
+    <nav class="nav-links" aria-label="メインナビ">
+      <a href="../index.html">ホーム</a>
+      <a href="../index.html#tools">ツール</a>
+      <a href="#features">機能</a>
+      <a class="btn btn-primary nav-cta magnetic hoverable" href="../index.html#contact">声をかける</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- FV -->
+<section class="lp-hero" data-parallax-scene>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">04 / 3D Landing Page</span>
+      <h1><span class="mask d1"><span>建設業に、</span></span><br><span class="mask d2"><span><span class="accent">AIの風</span>を。</span></span></h1>
+      <p class="lead reveal d2">硬派な建設業界に、海のように軽やかなWeb体験を。3Dロボットアームが回り、スクロールで現場が完成へ向かう。「アザラシ建設」は、建設×AI自動化を表現したランディングページの実例です。</p>
+      <div class="lp-chips reveal d3">
+        <span class="chip">Spline 3D</span><span class="chip chip-coral">マルチページ</span><span class="chip chip-sun">スクロール演出</span>
+      </div>
+      <div class="hero-actions reveal d4">
+        <a class="btn btn-primary btn-lg magnetic hoverable" href="#features">何ができるか見る
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="lp-visual reveal scale-in d2" data-flow style="background:var(--grad-deep)">
+      <!-- アイソメ建設シーン（手描き風） -->
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="アザラシが操作する建設現場のアイソメ図">
+        <defs>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fd3cc"/><stop offset="1" stop-color="#129ca0"/></linearGradient>
+        </defs>
+        <!-- 水面 -->
+        <ellipse cx="260" cy="350" rx="230" ry="58" fill="url(#sea)" opacity=".5"/>
+        <!-- 地盤 -->
+        <polygon class="flow-node" points="120,300 320,300 380,335 180,335" fill="#e9d9bd" stroke="#0a4d59" stroke-width="3" stroke-linejoin="round"/>
+        <!-- 建物（鉄骨→完成のレイヤ） -->
+        <polygon class="flow-node" points="200,180 300,180 300,300 200,300" fill="#fdfbf6" stroke="#0a4d59" stroke-width="3"/>
+        <polygon class="flow-node" points="300,180 340,205 340,322 300,300" fill="#c9f1ee" stroke="#0a4d59" stroke-width="3"/>
+        <line x1="222" y1="195" x2="222" y2="290" stroke="#93e4de" stroke-width="3"/>
+        <line x1="255" y1="195" x2="255" y2="290" stroke="#93e4de" stroke-width="3"/>
+        <line x1="288" y1="195" x2="288" y2="290" stroke="#93e4de" stroke-width="3"/>
+        <!-- クレーン -->
+        <line class="flow-line" x1="120" y1="320" x2="120" y2="90" stroke="#ff7a59" stroke-width="6" stroke-linecap="round"/>
+        <line class="flow-line" x1="120" y1="95" x2="300" y2="95" stroke="#ff7a59" stroke-width="6" stroke-linecap="round"/>
+        <line x1="270" y1="95" x2="270" y2="160" stroke="#ffc857" stroke-width="3"/>
+        <rect class="flow-node" x="256" y="160" width="28" height="22" rx="4" fill="#ffc857" stroke="#0a4d59" stroke-width="2.5"/>
+        <!-- アザラシのオペレーター -->
+        <circle class="flow-node" cx="120" cy="320" r="26" fill="#0a4d59"/>
+        <text x="120" y="328" font-size="26" text-anchor="middle">🦭</text>
+        <!-- ロボットアーム -->
+        <circle class="flow-node" cx="380" cy="300" r="20" fill="#0d7e87" stroke="#fff" stroke-width="2.5"/>
+        <text x="380" y="308" font-size="20" text-anchor="middle">🤖</text>
+      </svg>
+    </div>
+  </div>
+  <div class="lp-divider"><svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C260,110 460,10 720,55 C1000,100 1240,20 1440,60 L1440,110 L0,110 Z" fill="var(--sand-50)"/></svg></div>
+</section>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">The challenge</span><h2 class="reveal d1">建設業のWebは、<br>「お堅い」で止まっていた。</h2></div>
+    <div class="problem-grid">
+      <div class="problem-card reveal d1"><span class="pc-no">01</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><h3>古い印象のまま</h3><p>テンプレ的なコーポレートサイトばかりで、若い人材や新規顧客の心が動かない。</p></div>
+      <div class="problem-card reveal d2"><span class="pc-no">02</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>AIの強みが伝わらない</h3><p>「AIで自動化できます」と言葉で書いても、体験として伝わらず差別化にならない。</p></div>
+      <div class="problem-card reveal d3"><span class="pc-no">03</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z"/></svg></div><h3>制作費が読めない</h3><p>3Dや動きのあるサイトは外注すると高額。実例がないと費用感もわからない。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 機能（横スクロール） -->
+<section class="features" id="features" data-hscroll>
+  <div class="hscroll">
+    <div class="hscroll-head section-head"><span class="eyebrow reveal">What it does</span><h2 class="reveal d1">横にスクロール → 仕掛けを体験。</h2></div>
+    <div class="hscroll-track">
+      <article class="feature-panel"><span class="fp-no">F-01</span><div class="fp-icon">🦾</div><h3>回る3Dロボットアーム</h3><p>ヒーロー中央にSplineの3Dを配置。マウスに反応し、建設の「動き」を象徴的に見せます。</p><div class="fp-tag"><span class="chip">Spline / WebGL</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-02</span><div class="fp-icon">🏗️</div><h3>スクロールで現場が完成</h3><p>更地 → 基礎 → 鉄骨 → 完成。スクロールに連れて建物が積み上がる段階演出。</p><div class="fp-tag"><span class="chip chip-coral">スクロール連動</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-03</span><div class="fp-icon">🌊</div><h3>海×現場の世界観</h3><p>青いラグーンと建設現場を融合。アザラシのマスコットが各所に登場し、親しみを生みます。</p><div class="fp-tag"><span class="chip chip-sun">ブランディング</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-04</span><div class="fp-icon">📄</div><h3>マルチページ構成</h3><p>トップ・資料・進捗発信・コンサル・会社情報・問い合わせ。事業の全体像を1サイトで。</p><div class="fp-tag"><span class="chip">6ページ</span></div></article>
+    </div>
+    <div class="hscroll-progress"><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<!-- 実際の画面 -->
+<section class="section showcase">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="eyebrow">Screenshot</span><h2 class="reveal d1">これが、実際の画面。</h2><p class="lead reveal d2">3Dロボットアームのトップから、コンサル紹介ページまで。海と現場の世界観で統一しています。</p></div>
+    <div class="shot-grid">
+      <figure class="browser-frame reveal scale-in d1">
+        <div class="bf-bar"><span></span><span></span><span></span><em>top</em></div>
+        <img src="../assets/shots/construction.png" alt="アザラシ建設サイトのトップ画面" loading="lazy">
+      </figure>
+      <figure class="browser-frame reveal scale-in d2">
+        <div class="bf-bar"><span></span><span></span><span></span><em>consul</em></div>
+        <img src="../assets/shots/construction-2.png" alt="アザラシ建設サイトのコンサル紹介画面" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="divider-deep lp-stats" data-parallax-scene>
+  <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--bg)"/></svg></span>
+  <div class="wrap center" style="padding-block:var(--sp-5);position:relative;z-index:1">
+    <span class="eyebrow reveal" style="color:var(--lagoon-100)">Outcome</span>
+    <h2 class="reveal d1" style="margin:.4em 0 1.4em">"動くサイト"を、<br>自分の手で。</h2>
+    <div class="stat-row reveal d2">
+      <div class="stat"><div class="num" data-count="6"><span>0</span></div><div class="lbl">ページ構成</div></div>
+      <div class="stat"><div class="num" data-count="1"><span>0</span></div><div class="lbl">3Dヒーロー</div></div>
+      <div class="stat"><div class="num" data-count="4"><span>0</span></div><div class="lbl">建設の進行段階</div></div>
+      <div class="stat"><div class="num" data-count="0" data-suffix="円"><span>0</span></div><div class="lbl">外注コスト</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 回遊 -->
+<section class="section next-tools">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">Next island</span><h2 class="reveal d1">次の島へ渡る。</h2></div>
+    <div class="next-grid">
+      <a class="tool-card reveal d1 hoverable" data-tilt href="voice.html"><span class="tc-no">01 / VOICE</span><h3>声で、整って、入る。</h3><div class="tc-tag">音声入力ツール</div><p>話すだけで誤変換も直して入力。月額有料をローカルで無料に。</p><div class="tc-foot"><span class="chip chip-coral">月額0円</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d2 hoverable" data-tilt href="design-kit.html"><span class="tc-no">05 / DESIGN</span><h3>美しさの設計図を盗む。</h3><div class="tc-tag">design-language 抽出</div><p>憧れサイトのCSSから色・余白・フォントを自動抽出。</p><div class="tc-foot"><span class="chip">自動解析</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d3 hoverable" data-tilt href="open-design.html"><span class="tc-no">06 / PRINCIPLES</span><h3>成果が出る15の法則。</h3><div class="tc-tag">オープンデザイン</div><p>競合14社分析から導いた原則を実装したデモ。</p><div class="tc-foot"><span class="chip">14社分析</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border:none;margin:0;padding:0">
+      <a href="../index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-family:var(--font-display);font-weight:700"><img src="../assets/seal/seal_medallion.png" alt="" style="width:36px;height:36px;border-radius:50%">遊牧民ラボに戻る</a>
+      <span>© 2026 Yubokumin Lab</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/core.js" defer></script>
+<script src="../js/smooth.js" defer></script>
+<script src="../js/cursor.js" defer></script>
+<script src="../js/lp.js" defer></script>
+</body>
+</html>

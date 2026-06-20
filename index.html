@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遊牧民ラボ — PC1台で、海の向こうから。自作AIツールの実績集</title>
+<meta name="description" content="建設業×AI自動化を独学で進める個人事業主・遊牧民の実績ポートフォリオ。音声入力・SNS自動発信・AI対談動画など、自作ツール6本をモルディブのラグーンから紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/hero.css">
+<!-- 慣性スクロール & スクロール演出（CDN・ビルド不要） -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- ===== ナビ ===== -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/seal/seal_medallion.png" alt="" aria-hidden="true">
+      <span>遊牧民ラボ<small>YUBOKUMIN LAB</small></span>
+    </a>
+    <nav class="nav-links" aria-label="メインナビ">
+      <a href="index.html" data-page="index.html">ホーム</a>
+      <a href="#tools">ツール</a>
+      <a href="#story">世界観</a>
+      <a href="#profile">プロフィール</a>
+      <a class="btn btn-primary nav-cta magnetic hoverable" href="#contact">声をかける</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<section class="hero" data-parallax-scene>
+  <!-- Spline 水・リゾートシーン（spline-hero.js が挿入） -->
+  <div class="hero-stage" id="heroStage" data-scene="https://prod.spline.design/7PA5QTpluER3HI-s/scene.splinecode"></div>
+  <!-- fallback（モバイル/低スペック/失敗時） -->
+  <div class="hero-fallback" id="heroFallback" style="display:none">
+    <span class="sun parallax p-soft"></span>
+    <img class="seal parallax p-mid" src="assets/seal/seal_medallion.png" alt="">
+    <div class="hero-water">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="wave-strip move slow">
+        <path d="M0,40 C240,90 360,0 720,40 C1080,80 1200,10 1440,40 L1440,120 L0,120 Z" fill="rgba(79,211,204,.35)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- アザラシのマスコット（リゾートの主役・前面に浮遊） -->
+  <div class="hero-seal parallax p-mid" id="heroSeal" aria-hidden="true">
+    <img src="assets/seal/seal_medallion.png" alt="遊牧民ラボのアザラシ">
+  </div>
+
+  <div class="hero-inner">
+    <span class="eyebrow reveal">Portfolio of an AI nomad</span>
+    <h1>
+      <span class="mask d1"><span>PC1台で、</span></span><br>
+      <span class="mask d2"><span>海の向こうから<span class="accent">自動化</span>を。</span></span>
+    </h1>
+    <p class="lead reveal d2">建設の現場で働きながら、ひとりでAIツールを作り続ける「遊牧民」の実績集。<br>面倒な繰り返しを、アザラシたちが代わりにこなします。</p>
+    <div class="hero-actions reveal d3">
+      <a class="btn btn-primary btn-lg magnetic hoverable" href="#tools">6つのツールを見る
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost btn-lg hoverable" href="#story">世界観を知る</a>
+    </div>
+    <div class="hero-meta reveal d4">
+      <div><div class="num">6</div><div class="lbl">PUBLISHED TOOLS</div></div>
+      <div><div class="num">100%</div><div class="lbl">SOLO BUILD</div></div>
+      <div><div class="num">0円</div><div class="lbl">月額に縛られない</div></div>
+    </div>
+  </div>
+
+  <a class="hero-scroll hoverable" href="#story" aria-label="下へスクロール">
+    <span class="scroll-cue"><span class="mouse"></span>SCROLL</span>
+  </a>
+
+  <div class="hero-divider">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,70 C220,120 420,20 720,60 C1020,100 1240,30 1440,70 L1440,130 L0,130 Z" fill="var(--sand-50)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 世界観イントロ ===== -->
+<section class="section" id="story" data-parallax-scene>
+  <span class="deco parallax p-soft" style="top:8%;right:6%;width:120px;opacity:.5" aria-hidden="true">
+    <img src="assets/seal/seal_face.png" alt="" class="anim-float">
+  </span>
+  <div class="wrap-narrow center">
+    <span class="eyebrow reveal">The story</span>
+    <h2 class="reveal d1">「遊牧民」は、<br>場所に縛られずに働く。</h2>
+    <p class="lead reveal d2">朝は現場、夜はコード。決まったオフィスも、決まった時間もない。<br>
+      ノートPC1台あれば、ラグーンの上でも仕事は回る。<br>
+      そんな働き方を支えるのが、ここに並ぶ<strong>自作のAIツールたち</strong>です。<br>
+      退屈な繰り返しは、アザラシの相棒に任せて。</p>
+  </div>
+</section>
+
+<!-- ===== ツール6枚グリッド ===== -->
+<section class="section" id="tools">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow reveal">The fleet — 6 tools</span>
+      <h2 class="reveal d1">海を渡る、6つの相棒。</h2>
+      <p class="lead reveal d2">どれも「自分が本当に欲しかったから作った」もの。カードをめくって、各ツールの島へ。</p>
+    </div>
+
+    <div class="tool-grid">
+      <!-- 1 voice -->
+      <a class="tool-card reveal d1 hoverable" data-tilt href="tools/voice.html">
+        <div class="tc-banner"><img src="assets/shots/banners/voice.jpg" alt="" loading="lazy"><span class="tc-no">01 / VOICE</span></div>
+        <div class="tc-body">
+        <h3>声で、整って、入る。</h3>
+        <div class="tc-tag">音声入力ツール</div>
+        <p>話すだけで、誤変換もフィラーも自動で直して、カーソル位置へ。月額有料の音声入力を、ローカル完結で無料に。</p>
+        <div class="tc-foot"><span class="chip chip-coral">月額0円</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <!-- 2 sns -->
+      <a class="tool-card reveal d2 hoverable" data-tilt href="tools/sns.html">
+        <div class="tc-banner"><img src="assets/shots/banners/sns.jpg" alt="" loading="lazy"><span class="tc-no">02 / SOCIAL</span></div>
+        <div class="tc-body">
+        <h3>朝7時、勝手に発信。</h3>
+        <div class="tc-tag">SNS進捗発信ツール</div>
+        <p>その日の進捗をAIがX向けに書き起こし、自動投稿。承認はLINEで一言。発信を「続ける」が、仕組みで叶う。</p>
+        <div class="tc-foot"><span class="chip">全自動</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <!-- 3 radio -->
+      <a class="tool-card reveal d3 hoverable" data-tilt href="tools/radio.html">
+        <div class="tc-banner"><img src="assets/shots/banners/radio.jpg" alt="" loading="lazy"><span class="tc-no">03 / RADIO</span></div>
+        <div class="tc-body">
+        <h3>2匹のアザラシが、喋り続ける。</h3>
+        <div class="tc-tag">遊牧民ラジオ</div>
+        <p>お題を入れるだけで、2キャラのAI対談動画が完成。音声も字幕も、APIゼロで全部このPCの中で。</p>
+        <div class="tc-foot"><span class="chip chip-sun">API不要</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <!-- 4 construction -->
+      <a class="tool-card reveal d1 hoverable" data-tilt href="tools/construction.html">
+        <div class="tc-banner"><img src="assets/shots/banners/construction.jpg" alt="" loading="lazy"><span class="tc-no">04 / 3D SITE</span></div>
+        <div class="tc-body">
+        <h3>建設業に、AIの風を。</h3>
+        <div class="tc-tag">アザラシ建設 3Dサイト</div>
+        <p>3Dロボットアームが回るランディングページ。建設×AI自動化を、海と現場の世界観で見せるWeb制作の実例。</p>
+        <div class="tc-foot"><span class="chip">3D / Spline</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <!-- 5 design-kit -->
+      <a class="tool-card reveal d2 hoverable" data-tilt href="tools/design-kit.html">
+        <div class="tc-banner"><img src="assets/shots/banners/design-kit.jpg" alt="" loading="lazy"><span class="tc-no">05 / DESIGN</span></div>
+        <div class="tc-body">
+        <h3>美しさの"設計図"を盗む。</h3>
+        <div class="tc-tag">design-language 抽出キット</div>
+        <p>憧れのサイトのCSSから、色・余白・フォントの法則を自動抽出。再現できるデザインキットに変換する。</p>
+        <div class="tc-foot"><span class="chip">自動解析</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <!-- 6 open-design -->
+      <a class="tool-card reveal d3 hoverable" data-tilt href="tools/open-design.html">
+        <div class="tc-banner"><img src="assets/shots/banners/open-design.jpg" alt="" loading="lazy"><span class="tc-no">06 / PRINCIPLES</span></div>
+        <div class="tc-body">
+        <h3>成果が出るサイトの、15の法則。</h3>
+        <div class="tc-tag">オープンデザイン</div>
+        <p>競合14社を分析して導いた「結果につながる」原則を、実装レベルで形にしたデモサイト。</p>
+        <div class="tc-foot"><span class="chip">14社分析</span><span class="tc-go">島へ渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== プロフィール ===== -->
+<section class="section" id="profile" data-parallax-scene>
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,5vw,5rem);align-items:center">
+    <div class="reveal from-left" style="position:relative">
+      <div style="background:var(--grad-lagoon);border-radius:var(--r-xl);padding:14% 10% 0;box-shadow:var(--sh-lg);overflow:hidden">
+        <img src="assets/chars/yubokumin-1.png" alt="遊牧民のアバター" class="scrollpop" style="width:100%;transform:translateY(var(--pop,0));transition:transform .2s var(--ease)">
+      </div>
+      <span class="deco" style="bottom:-18px;right:-10px;width:96px" aria-hidden="true"><img src="assets/seal/seal_medallion.png" alt="" class="anim-float-soft"></span>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Who is the nomad</span>
+      <h2 class="reveal d1">現場を知る、<br>ひとりのAIビルダー。</h2>
+      <p class="lead reveal d2">建設コンサルタントとして働きながら、業界に足りない「AI自動化」を独学で形にしています。
+        コードは専門外。それでも「自分が困っていること」を起点に、動くツールを次々と完成させてきました。</p>
+      <div class="stat-row reveal d3" style="margin-top:2.4rem">
+        <div class="stat"><div class="num" data-count="6"><span>0</span></div><div class="lbl">公開ツール</div></div>
+        <div class="stat"><div class="num" data-count="40" data-suffix="+"><span>0</span></div><div class="lbl">試作プロジェクト</div></div>
+        <div class="stat"><div class="num" data-count="2"><span>0</span></div><div class="lbl">時間/平日の開発</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 実績サマリ（深い海・カウントアップ） ===== -->
+<section class="divider-deep" data-parallax-scene style="position:relative;overflow:hidden">
+  <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--sand-50)"/></svg></span>
+  <div class="wrap center" style="padding-block:var(--sp-5)">
+    <span class="eyebrow reveal" style="color:var(--lagoon-100)">By the numbers</span>
+    <h2 class="reveal d1" style="margin:.4em 0 1.4em">小さな自動化が、<br>大きな時間を生む。</h2>
+    <div class="stat-row reveal d2">
+      <div class="stat"><div class="num" data-count="6"><span>0</span></div><div class="lbl">完成ツール</div></div>
+      <div class="stat"><div class="num" data-count="3"><span>0</span></div><div class="lbl">対応SNS媒体</div></div>
+      <div class="stat"><div class="num" data-count="100" data-suffix="%"><span>0</span></div><div class="lbl">ローカル/自前運用</div></div>
+      <div class="stat"><div class="num" data-count="0" data-suffix="円"><span>0</span></div><div class="lbl">外部月額に依存</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== フッター / contact ===== -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand"><img src="assets/seal/seal_medallion.png" alt="">遊牧民ラボ</div>
+        <p style="color:var(--lagoon-100);max-width:36ch">建設×AI自動化を、ひとりで。<br>「作って、あとはAIに回させる」を信条に、海の向こうから発信しています。</p>
+        <div class="hero-actions" style="margin-top:1.6rem">
+          <a class="btn btn-primary magnetic hoverable" href="https://x.com" target="_blank" rel="noopener">Xで声をかける</a>
+        </div>
+      </div>
+      <div>
+        <h4>ツール</h4>
+        <ul>
+          <li><a href="tools/voice.html">音声入力ツール</a></li>
+          <li><a href="tools/sns.html">SNS進捗発信</a></li>
+          <li><a href="tools/radio.html">遊牧民ラジオ</a></li>
+          <li><a href="tools/construction.html">アザラシ建設 3D</a></li>
+          <li><a href="tools/design-kit.html">design-language</a></li>
+          <li><a href="tools/open-design.html">オープンデザイン</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>このサイト</h4>
+        <ul>
+          <li><a href="#story">世界観</a></li>
+          <li><a href="#profile">プロフィール</a></li>
+          <li><a href="#tools">ツール一覧</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 遊牧民ラボ — Yubokumin Lab. Built solo, runs on AI.</span>
+      <span>Maldives-inspired · made with Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/core.js" defer></script>
+<script src="js/smooth.js" defer></script>
+<script src="js/cursor.js" defer></script>
+<script src="js/spline-hero.js" defer></script>
+<script src="js/lp.js" defer></script>
+</body>
+</html>

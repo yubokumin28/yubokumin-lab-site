@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNS進捗発信ツール — 朝7時、勝手にXへ | 遊牧民ラボ</title>
+<meta name="description" content="その日の進捗をAIがX向けに書き起こし、朝7時に自動投稿。承認はLINEで一言。発信を「続ける」を、仕組みで叶える自作ツールです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/lp.css">
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/seal/seal_medallion.png" alt="" aria-hidden="true"><span>遊牧民ラボ<small>YUBOKUMIN LAB</small></span></a>
+    <nav class="nav-links" aria-label="メインナビ">
+      <a href="../index.html">ホーム</a><a href="../index.html#tools">ツール</a><a href="#features">機能</a>
+      <a class="btn btn-primary nav-cta magnetic hoverable" href="../index.html#contact">声をかける</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- FV -->
+<section class="lp-hero" data-parallax-scene>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">02 / Auto Social</span>
+      <h1><span class="mask d1"><span>朝7時、</span></span><br><span class="mask d2"><span>勝手に<span class="accent">Xへ</span>。</span></span></h1>
+      <p class="lead reveal d2">その日の進捗を、AIがあなたの口調でツイートに書き起こし、定刻に自動投稿。確認は<strong>LINEで「OK」の一言</strong>だけ。「発信を続けられない」を、仕組みで終わらせます。</p>
+      <div class="lp-chips reveal d3"><span class="chip">全自動 / 定時</span><span class="chip chip-coral">LINE承認</span><span class="chip chip-sun">AIが下書き</span></div>
+      <div class="hero-actions reveal d4"><a class="btn btn-primary btn-lg magnetic hoverable" href="#features">流れを見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="lp-visual reveal scale-in d2" data-flow style="background:var(--grad-deep)">
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="進捗が自動でXへ投稿されるまでの流れ図">
+        <path class="flow-line" d="M95,90 H200" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M250,120 V210" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M300,240 H400" stroke="#ffc857" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M250,280 V360 H120" stroke="#ff7a59" stroke-width="4" fill="none"/>
+        <!-- 朝7時 -->
+        <g class="flow-node"><circle cx="60" cy="90" r="38" fill="#ffc857"/><text x="60" y="100" font-size="28" text-anchor="middle">⏰</text></g>
+        <text x="60" y="150" font-size="13" text-anchor="middle" fill="#eafaf8">朝 7:00</text>
+        <!-- Pinecone -->
+        <g class="flow-node"><rect x="200" y="60" width="92" height="60" rx="12" fill="#fdfbf6" stroke="#0a4d59" stroke-width="2.5"/><text x="246" y="86" font-size="13" text-anchor="middle" fill="#0c2b33">Pinecone</text><text x="246" y="104" font-size="11" text-anchor="middle" fill="#3c5b62">過去の発言</text></g>
+        <!-- Claude生成 -->
+        <g class="flow-node"><circle cx="250" cy="240" r="42" fill="#129ca0"/><text x="250" y="252" font-size="30" text-anchor="middle">🤖</text></g>
+        <text x="250" y="300" font-size="12" text-anchor="middle" fill="#eafaf8">Claudeが下書き</text>
+        <!-- X投稿 -->
+        <g class="flow-node"><rect x="400" y="208" width="64" height="64" rx="16" fill="#0c2b33" stroke="#fff" stroke-width="2"/><text x="432" y="250" font-size="30" text-anchor="middle" fill="#fff">𝕏</text></g>
+        <!-- LINE承認 -->
+        <g class="flow-node"><circle cx="90" cy="360" r="34" fill="#2f9e7d"/><text x="90" y="370" font-size="26" text-anchor="middle">✅</text></g>
+        <text x="90" y="410" font-size="12" text-anchor="middle" fill="#eafaf8">LINEで承認</text>
+      </svg>
+    </div>
+  </div>
+  <div class="lp-divider"><svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C260,110 460,10 720,55 C1000,100 1240,20 1440,60 L1440,110 L0,110 Z" fill="var(--sand-50)"/></svg></div>
+</section>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">The challenge</span><h2 class="reveal d1">「発信が大事」は、<br>わかっている。でも続かない。</h2></div>
+    <div class="problem-grid">
+      <div class="problem-card reveal d1"><span class="pc-no">01</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>毎日書く時間がない</h3><p>本業に追われ、SNSの投稿を考える数十分すら捻出できない。気づけば数週間放置。</p></div>
+      <div class="problem-card reveal d2"><span class="pc-no">02</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H7l-3 3z"/></svg></div><h3>何を書けばいいか迷う</h3><p>ネタ探しと文章づくりがしんどい。毎回ゼロから考えるのが続かない原因。</p></div>
+      <div class="problem-card reveal d3"><span class="pc-no">03</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z"/></svg></div><h3>全自動は暴走が怖い</h3><p>完全自動投稿はAIが変な文を出さないか不安。でも毎回手動だと結局続かない。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 機能 -->
+<section class="features" id="features" data-hscroll>
+  <div class="hscroll">
+    <div class="hscroll-head section-head"><span class="eyebrow reveal">What it does</span><h2 class="reveal d1">横スクロールで、発信の自動化。</h2></div>
+    <div class="hscroll-track">
+      <article class="feature-panel"><span class="fp-no">F-01</span><div class="fp-icon">🗄️</div><h3>過去の自分から素材集め</h3><p>Pineconeに溜めた進捗・発言を検索し、その日のネタを自動で拾い上げます。</p><div class="fp-tag"><span class="chip">ナレッジ連携</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-02</span><div class="fp-icon">✍️</div><h3>自分の口調で下書き</h3><p>Claudeが「あなたらしい」言い回しで投稿文を生成。遊牧民ペルソナの世界観も保ちます。</p><div class="fp-tag"><span class="chip chip-coral">話し方を再現</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-03</span><div class="fp-icon">📱</div><h3>LINEで承認するだけ</h3><p>下書きがLINEに届き、「OK」で投稿・「直して」で再生成。暴走しない半自動運用。</p><div class="fp-tag"><span class="chip chip-sun">安全装置</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-04</span><div class="fp-icon">⏰</div><h3>定時に自動投稿</h3><p>クラウドのCronで朝7時に発火。挿絵も自動生成。あなたは寝ていても発信が続きます。</p><div class="fp-tag"><span class="chip">毎朝自動</span></div></article>
+    </div>
+    <div class="hscroll-progress"><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<!-- 実際の出力 -->
+<section class="section showcase">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="eyebrow">Output sample</span><h2 class="reveal d1">投稿も、挿絵も、自動で。</h2><p class="lead reveal d2">本文に合わせてAIが挿絵まで生成します。これは実際に生成された投稿画像の一例です。</p></div>
+    <figure class="browser-frame reveal scale-in d1" style="max-width:760px">
+      <div class="bf-bar"><span></span><span></span><span></span><em>auto-generated post image</em></div>
+      <img src="../assets/shots/sns-sample.png" alt="SNS発信ツールが自動生成した投稿画像の例" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="divider-deep lp-stats" data-parallax-scene>
+  <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--bg)"/></svg></span>
+  <div class="wrap center" style="padding-block:var(--sp-5);position:relative;z-index:1">
+    <span class="eyebrow reveal" style="color:var(--lagoon-100)">By the numbers</span>
+    <h2 class="reveal d1" style="margin:.4em 0 1.4em">寝ていても、<br>発信は止まらない。</h2>
+    <div class="stat-row reveal d2">
+      <div class="stat"><div class="num" data-count="7" data-suffix=":00"><span>0</span></div><div class="lbl">自動投稿の定刻</div></div>
+      <div class="stat"><div class="num" data-count="3"><span>0</span></div><div class="lbl">対応SNS媒体</div></div>
+      <div class="stat"><div class="num" data-count="2"><span>0</span></div><div class="lbl">承認 / 全自動モード</div></div>
+      <div class="stat"><div class="num" data-count="1" data-suffix="タップ"><span>0</span></div><div class="lbl">承認の手間</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 回遊 -->
+<section class="section next-tools">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">Next island</span><h2 class="reveal d1">次の島へ渡る。</h2></div>
+    <div class="next-grid">
+      <a class="tool-card reveal d1 hoverable" data-tilt href="radio.html"><span class="tc-no">03 / RADIO</span><h3>2匹のアザラシが喋る。</h3><div class="tc-tag">遊牧民ラジオ</div><p>お題を入れるだけで対談動画が完成。APIゼロで全部ローカル。</p><div class="tc-foot"><span class="chip chip-sun">API不要</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d2 hoverable" data-tilt href="voice.html"><span class="tc-no">01 / VOICE</span><h3>声で、整って、入る。</h3><div class="tc-tag">音声入力ツール</div><p>話すだけで誤変換も直して入力。月額有料をローカルで無料に。</p><div class="tc-foot"><span class="chip chip-coral">月額0円</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d3 hoverable" data-tilt href="design-kit.html"><span class="tc-no">05 / DESIGN</span><h3>美しさの設計図を盗む。</h3><div class="tc-tag">design-language 抽出</div><p>憧れサイトのCSSから色・余白・フォントを自動抽出。</p><div class="tc-foot"><span class="chip">自動解析</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap"><div class="footer-bottom" style="border:none;margin:0;padding:0">
+    <a href="../index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-family:var(--font-display);font-weight:700"><img src="../assets/seal/seal_medallion.png" alt="" style="width:36px;height:36px;border-radius:50%">遊牧民ラボに戻る</a>
+    <span>© 2026 Yubokumin Lab</span>
+  </div></div>
+</footer>
+
+<script src="../js/core.js" defer></script>
+<script src="../js/smooth.js" defer></script>
+<script src="../js/cursor.js" defer></script>
+<script src="../js/lp.js" defer></script>
+</body>
+</html>

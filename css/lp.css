@@ -1,0 +1,103 @@
+/* =====================================================================
+   lp.css — 個別LP共通レイアウト
+   FV / 課題 / 機能(横スクロール) / 図解 / 実績 / 回遊
+   ===================================================================== */
+
+/* ---------- LPファーストビュー ---------- */
+.lp-hero {
+  position: relative; min-height: 88svh; display: flex; align-items: center;
+  background: var(--grad-deep); color: var(--text-on-deep); overflow: hidden; isolation: isolate;
+  padding-top: var(--nav-h);
+}
+.lp-hero::before {
+  content: ""; position: absolute; inset: -10% -10% auto -10%; height: 70%; z-index: -2;
+  background: radial-gradient(55% 60% at 25% 0%, rgba(79,211,204,.38), transparent 70%),
+              radial-gradient(45% 45% at 85% 5%, rgba(255,200,87,.20), transparent 70%);
+}
+.lp-hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.lp-hero .eyebrow { color: var(--lagoon-100); }
+.lp-hero .eyebrow::before { background: var(--sun); }
+.lp-hero h1 { color: #fff; font-size: clamp(2.4rem, 1.6rem + 4vw, 5rem); margin: .25em 0 .5em; }
+.lp-hero h1 .accent { background: var(--grad-sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lp-hero p.lead { color: var(--lagoon-100); max-width: 46ch; }
+.lp-hero .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.lp-hero .lp-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+
+/* FVのビジュアル枠（SVG図解 / Spline / 動画） */
+.lp-visual { position: relative; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-lg); background: var(--surface); }
+.lp-visual.bare { background: transparent; box-shadow: none; overflow: visible; }
+.lp-visual video, .lp-visual img { width: 100%; display: block; }
+.lp-visual .play-badge { position: absolute; left: 1rem; bottom: 1rem; }
+
+.lp-divider { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 1; line-height: 0; }
+.lp-divider svg { width: 100%; height: clamp(50px, 7vw, 110px); }
+
+/* ---------- 課題セクション ---------- */
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: var(--sp-4); }
+.problem-card { background: var(--surface); border-radius: var(--r-lg); padding: 2rem 1.7rem; box-shadow: var(--sh-md); position: relative; }
+.problem-card .pc-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 16px; background: #fff0eb; color: var(--coral-dk); margin-bottom: 1rem; }
+.problem-card .pc-icon svg { width: 28px; height: 28px; }
+.problem-card h3 { font-size: 1.18rem; margin-bottom: .5rem; }
+.problem-card p { font-size: .94rem; }
+.problem-card .pc-no { position: absolute; top: 1.2rem; right: 1.4rem; font-family: var(--font-latin); font-weight: 800; font-size: 2.4rem; color: var(--sand-200); line-height: 1; }
+
+/* ---------- 機能（横スクロール pin） ---------- */
+.features { background: var(--grad-foam); overflow: hidden; }
+.hscroll { position: relative; height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+.hscroll .hscroll-head { width: min(100% - 2.5rem, var(--maxw)); margin-inline: auto; margin-bottom: 2rem; }
+.hscroll-track { display: flex; gap: 1.6rem; padding-inline: max(2.5vw, calc((100vw - var(--maxw)) / 2 + 1.25rem)); will-change: transform; }
+.feature-panel {
+  flex: 0 0 clamp(280px, 42vw, 460px); background: var(--surface); border-radius: var(--r-lg);
+  padding: 2.4rem; box-shadow: var(--sh-md); display: flex; flex-direction: column; min-height: 360px;
+}
+.feature-panel .fp-no { font-family: var(--font-latin); font-weight: 700; color: var(--lagoon-300); letter-spacing: .1em; font-size: .85rem; }
+.feature-panel .fp-icon { font-size: 2.4rem; margin: .6rem 0 1rem; }
+.feature-panel h3 { font-size: 1.5rem; margin-bottom: .7rem; }
+.feature-panel p { flex: 1; }
+.feature-panel .fp-tag { margin-top: 1.4rem; }
+/* 横スクロール不可時の縦積みフォールバック */
+.hscroll.hscroll-stacked { height: auto; padding-block: var(--section-y); }
+.hscroll-stacked .hscroll-track { flex-direction: column; transform: none !important; padding-inline: 0; gap: 1.4rem; }
+.hscroll-stacked .feature-panel { flex: none; min-height: auto; }
+.hscroll-progress { position: absolute; left: 50%; bottom: 2.2rem; transform: translateX(-50%); display: flex; gap: .4rem; }
+.hscroll-progress span { width: 8px; height: 8px; border-radius: 50%; background: var(--sand-300); }
+.hscroll-stacked .hscroll-progress { display: none; }
+
+/* ---------- 図解セクション ---------- */
+.diagram { background: var(--surface); }
+.diagram-frame { background: var(--grad-foam); border-radius: var(--r-xl); padding: clamp(1.5rem, 4vw, 3.5rem); box-shadow: var(--sh-md); }
+.diagram-frame svg { width: 100%; height: auto; }
+.diagram-cap { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.6rem; justify-content: center; }
+.diagram-cap .dc { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--text-soft); }
+.diagram-cap .dc i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* ---------- 実際の画面（ブラウザ枠ショーケース） ---------- */
+.showcase { background: var(--grad-foam); }
+.browser-frame {
+  max-width: 1000px; margin: var(--sp-4) auto 0; border-radius: var(--r-lg); overflow: hidden;
+  background: var(--surface); box-shadow: var(--sh-lg); border: 1px solid rgba(255,255,255,.7);
+}
+.browser-frame .bf-bar { display: flex; align-items: center; gap: .5rem; padding: .8rem 1.1rem; background: #eef4f3; border-bottom: 1px solid var(--sand-200); }
+.browser-frame .bf-bar span { width: 11px; height: 11px; border-radius: 50%; background: #d6dedd; }
+.browser-frame .bf-bar span:nth-child(1){ background:#ff7a59; } .browser-frame .bf-bar span:nth-child(2){ background:#ffc857; } .browser-frame .bf-bar span:nth-child(3){ background:#2f9e7d; }
+.browser-frame .bf-bar em { margin-left: .8rem; font-style: normal; font-size: .8rem; color: var(--text-mute); font-family: var(--font-latin); letter-spacing: .04em; }
+.browser-frame img { width: 100%; display: block; max-height: 520px; object-fit: cover; object-position: top center; }
+.showcase .shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; max-width: 1000px; margin: var(--sp-4) auto 0; }
+.showcase .shot-grid .browser-frame { margin: 0; max-width: none; }
+.showcase figcaption { text-align: center; color: var(--text-soft); font-size: .92rem; margin-top: 1.2rem; }
+@media (max-width: 760px){ .showcase .shot-grid { grid-template-columns: 1fr; } }
+
+/* ---------- 実績（深い海・カウントアップ） ---------- */
+.lp-stats { position: relative; overflow: hidden; }
+.lp-stats .wave-bg { position: absolute; inset: auto 0 0 0; height: 60%; z-index: 0; opacity: .5; }
+
+/* ---------- 回遊（次のツールへ） ---------- */
+.next-tools { background: var(--bg); }
+.next-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; margin-top: var(--sp-4); }
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 880px) {
+  .lp-hero .wrap { grid-template-columns: 1fr; }
+  .lp-visual { order: -1; }
+  .problem-grid { grid-template-columns: 1fr; }
+}

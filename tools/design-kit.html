@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>design-language 抽出キット — 美しさの設計図を盗む | 遊牧民ラボ</title>
+<meta name="description" content="憧れのWebサイトのCSSから、色・余白・フォント・角丸の法則を自動抽出。再現できるデザインキット(トークン+ブリーフ)に変換する自作ツールです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/lp.css">
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/seal/seal_medallion.png" alt="" aria-hidden="true"><span>遊牧民ラボ<small>YUBOKUMIN LAB</small></span></a>
+    <nav class="nav-links" aria-label="メインナビ">
+      <a href="../index.html">ホーム</a><a href="../index.html#tools">ツール</a><a href="#features">機能</a>
+      <a class="btn btn-primary nav-cta magnetic hoverable" href="../index.html#contact">声をかける</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- FV -->
+<section class="lp-hero" data-parallax-scene>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">05 / Design Language</span>
+      <h1><span class="mask d1"><span>美しさの</span></span><br><span class="mask d2"><span><span class="accent">"設計図"</span>を盗む。</span></span></h1>
+      <p class="lead reveal d2">「このサイト、なんでこんなに垢抜けてるんだろう」。その答えをCSSから自動で読み解き、色・余白・フォント・角丸の<strong>デザイン言語</strong>として抽出。あなたの制作にそのまま使えるキットに変換します。</p>
+      <div class="lp-chips reveal d3"><span class="chip">自動CSS解析</span><span class="chip chip-coral">トークン化</span><span class="chip chip-sun">MCP連携</span></div>
+      <div class="hero-actions reveal d4"><a class="btn btn-primary btn-lg magnetic hoverable" href="#features">仕組みを見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="lp-visual reveal scale-in d2" data-flow style="background:var(--grad-deep)">
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="サイトのCSSからデザイン言語を抽出する流れ図">
+        <path class="flow-line" d="M120,90 H210" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M260,130 V210" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M310,250 H400" stroke="#ffc857" stroke-width="4" fill="none"/>
+        <!-- 本番サイト -->
+        <g class="flow-node"><rect x="34" y="56" width="86" height="68" rx="10" fill="#fdfbf6" stroke="#0a4d59" stroke-width="2.5"/><rect x="44" y="66" width="66" height="12" rx="3" fill="#4fd3cc"/><rect x="44" y="84" width="50" height="8" rx="3" fill="#d9c29a"/><rect x="44" y="98" width="58" height="8" rx="3" fill="#d9c29a"/></g>
+        <text x="77" y="142" font-size="12" text-anchor="middle" fill="#eafaf8">憧れのサイト</text>
+        <!-- CSS解析 -->
+        <g class="flow-node"><circle cx="260" cy="250" r="44" fill="#129ca0"/><text x="260" y="262" font-size="28" text-anchor="middle">🔍</text></g>
+        <text x="260" y="312" font-size="12" text-anchor="middle" fill="#eafaf8">CSSを解析</text>
+        <!-- 抽出パネル(中間) -->
+        <g class="flow-node"><rect x="210" y="60" width="100" height="70" rx="10" fill="#073b4c" stroke="#4fd3cc" stroke-width="2"/>
+          <circle cx="228" cy="82" r="7" fill="#ff7a59"/><circle cx="248" cy="82" r="7" fill="#ffc857"/><circle cx="268" cy="82" r="7" fill="#4fd3cc"/><circle cx="288" cy="82" r="7" fill="#2f9e7d"/>
+          <rect x="222" y="100" width="76" height="7" rx="3" fill="#93e4de"/><rect x="222" y="113" width="54" height="7" rx="3" fill="#93e4de"/></g>
+        <!-- デザイン言語カード(出力) -->
+        <g class="flow-node"><rect x="400" y="206" width="104" height="90" rx="12" fill="#fff" stroke="#ff7a59" stroke-width="3"/>
+          <text x="452" y="232" font-size="12" text-anchor="middle" fill="#0c2b33" font-weight="700">tokens.json</text>
+          <rect x="414" y="244" width="76" height="8" rx="3" fill="#ff9b76"/><rect x="414" y="258" width="60" height="8" rx="3" fill="#4fd3cc"/><rect x="414" y="272" width="68" height="8" rx="3" fill="#ffc857"/></g>
+      </svg>
+    </div>
+  </div>
+  <div class="lp-divider"><svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C260,110 460,10 720,55 C1000,100 1240,20 1440,60 L1440,110 L0,110 Z" fill="var(--sand-50)"/></svg></div>
+</section>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">The challenge</span><h2 class="reveal d1">「センスがない」を、<br>仕組みで超える。</h2></div>
+    <div class="problem-grid">
+      <div class="problem-card reveal d1"><span class="pc-no">01</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></div><h3>なぜ綺麗か言語化できない</h3><p>良いサイトを真似たいのに、色や余白の「正解」がわからず、なんとなくダサくなる。</p></div>
+      <div class="problem-card reveal d2"><span class="pc-no">02</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>手作業の調査は地獄</h3><p>開発者ツールで色や余白を1つずつ調べるのは膨大な手間。続かない。</p></div>
+      <div class="problem-card reveal d3"><span class="pc-no">03</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 6-9 6-9-6z"/><path d="M3 15l9 6 9-6"/></svg></div><h3>AIに渡す指示が作れない</h3><p>v0やLovableに「あんな感じで」と頼んでも、具体がないと再現してくれない。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 機能 -->
+<section class="features" id="features" data-hscroll>
+  <div class="hscroll">
+    <div class="hscroll-head section-head"><span class="eyebrow reveal">What it does</span><h2 class="reveal d1">横スクロールで、抽出の4ステップ。</h2></div>
+    <div class="hscroll-track">
+      <article class="feature-panel"><span class="fp-no">F-01</span><div class="fp-icon">🌐</div><h3>JSサイトも丸ごと取得</h3><p>Firecrawl等と連携し、JavaScriptで描画されるモダンサイトも正確に取り込みます。</p><div class="fp-tag"><span class="chip">MCP連携</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-02</span><div class="fp-icon">🎨</div><h3>デザイン言語を自動抽出</h3><p>配色・タイポ・スペーシング・角丸・影を解析し、規則性のあるトークンに整理します。</p><div class="fp-tag"><span class="chip chip-coral">トークン化</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-03</span><div class="fp-icon">📦</div><h3>4点セットで書き出し</h3><p>ブリーフ・tokens.json・HTMLスカッフォルド・プレビュー画像を一括生成します。</p><div class="fp-tag"><span class="chip chip-sun">キット出力</span></div></article>
+      <article class="feature-panel"><span class="fp-no">F-04</span><div class="fp-icon">⚡</div><h3>AIにそのまま貼れる</h3><p>v0 / Lovable / Bolt / Claude に貼り付けるだけで、抽出したデザインを再現できます。</p><div class="fp-tag"><span class="chip">即制作へ</span></div></article>
+    </div>
+    <div class="hscroll-progress"><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<!-- 実際の画面 -->
+<section class="section showcase">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="eyebrow">Screenshot</span><h2 class="reveal d1">これが、出力されるキット。</h2><p class="lead reveal d2">抽出したデザイン言語を、そのままプレビューできるHTMLとして書き出します。</p></div>
+    <figure class="browser-frame reveal scale-in d1">
+      <div class="bf-bar"><span></span><span></span><span></span><em>design-kit — preview</em></div>
+      <img src="../assets/shots/design-kit.png" alt="design-languageキットの出力プレビュー画面" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="divider-deep lp-stats" data-parallax-scene>
+  <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--bg)"/></svg></span>
+  <div class="wrap center" style="padding-block:var(--sp-5);position:relative;z-index:1">
+    <span class="eyebrow reveal" style="color:var(--lagoon-100)">By the numbers</span>
+    <h2 class="reveal d1" style="margin:.4em 0 1.4em">センスを、<br>データに変える。</h2>
+    <div class="stat-row reveal d2">
+      <div class="stat"><div class="num" data-count="4"><span>0</span></div><div class="lbl">出力ファイル</div></div>
+      <div class="stat"><div class="num" data-count="5"><span>0</span></div><div class="lbl">抽出する次元</div></div>
+      <div class="stat"><div class="num" data-count="1" data-suffix="回"><span>0</span></div><div class="lbl">呼び出しで完結</div></div>
+      <div class="stat"><div class="num" data-count="4"><span>0</span></div><div class="lbl">対応AIビルダー</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 回遊 -->
+<section class="section next-tools">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">Next island</span><h2 class="reveal d1">次の島へ渡る。</h2></div>
+    <div class="next-grid">
+      <a class="tool-card reveal d1 hoverable" data-tilt href="open-design.html"><span class="tc-no">06 / PRINCIPLES</span><h3>成果が出る15の法則。</h3><div class="tc-tag">オープンデザイン</div><p>競合14社分析から導いた原則を実装したデモ。</p><div class="tc-foot"><span class="chip">14社分析</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d2 hoverable" data-tilt href="construction.html"><span class="tc-no">04 / 3D SITE</span><h3>建設業に、AIの風を。</h3><div class="tc-tag">アザラシ建設 3D</div><p>3Dロボットアームが回る建設業向けLPの実例。</p><div class="tc-foot"><span class="chip">3D / Spline</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d3 hoverable" data-tilt href="voice.html"><span class="tc-no">01 / VOICE</span><h3>声で、整って、入る。</h3><div class="tc-tag">音声入力ツール</div><p>話すだけで誤変換も直して入力。月額有料をローカルで無料に。</p><div class="tc-foot"><span class="chip chip-coral">月額0円</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap"><div class="footer-bottom" style="border:none;margin:0;padding:0">
+    <a href="../index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-family:var(--font-display);font-weight:700"><img src="../assets/seal/seal_medallion.png" alt="" style="width:36px;height:36px;border-radius:50%">遊牧民ラボに戻る</a>
+    <span>© 2026 Yubokumin Lab</span>
+  </div></div>
+</footer>
+
+<script src="../js/core.js" defer></script>
+<script src="../js/smooth.js" defer></script>
+<script src="../js/cursor.js" defer></script>
+<script src="../js/lp.js" defer></script>
+</body>
+</html>

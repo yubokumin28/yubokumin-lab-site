@@ -1,0 +1,84 @@
+/* =====================================================================
+   animations.css — reveal / パララックス / マスク / 波 / カウンタ
+   ===================================================================== */
+
+/* ---------- リビール（下から浮き上がる） ---------- */
+.reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); will-change: opacity, transform; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal.from-left  { transform: translateX(-48px); }
+.reveal.from-right { transform: translateX(48px); }
+.reveal.scale-in   { transform: scale(.92); }
+.reveal.visible.from-left, .reveal.visible.from-right, .reveal.visible.scale-in { transform: none; }
+/* スタッガー */
+.reveal.d1 { transition-delay: .08s; }
+.reveal.d2 { transition-delay: .18s; }
+.reveal.d3 { transition-delay: .28s; }
+.reveal.d4 { transition-delay: .38s; }
+.reveal.d5 { transition-delay: .48s; }
+
+/* ---------- マスク見出し（reveal と同じ確実な フェードアップ） ---------- */
+.mask { display: inline-block; vertical-align: top; opacity: 0; transform: translateY(44px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); will-change: opacity, transform; }
+.mask.visible { opacity: 1; transform: none; }
+.mask > span { display: inline-block; }
+.mask.d1 { transition-delay: .08s; }
+.mask.d2 { transition-delay: .2s; }
+.mask.d3 { transition-delay: .32s; }
+
+/* ---------- パララックス層（CSS変数 --mx/--my はJSが供給） ---------- */
+.parallax { transition: transform .1s linear; }
+.p-soft  { transform: translate3d(calc(var(--mx,0) * 14px), calc(var(--my,0) * 14px), 0); }
+.p-mid   { transform: translate3d(calc(var(--mx,0) * 30px), calc(var(--my,0) * 26px), 0); }
+.p-deep  { transform: translate3d(calc(var(--mx,0) * 52px), calc(var(--my,0) * 44px), 0); }
+
+/* ---------- 波・浮遊アニメ ---------- */
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@keyframes float-soft { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+@keyframes bob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.02); } }
+
+.anim-float { animation: float-y 6s var(--ease) infinite; }
+.anim-float-soft { animation: float-soft 7s var(--ease) infinite; }
+.anim-sway { animation: sway 5s var(--ease) infinite; transform-origin: bottom center; }
+
+/* 波の帯（横に流れる） */
+.wave-strip { position: absolute; left: 0; width: 200%; height: 100%; }
+.wave-strip.move { animation: drift 18s linear infinite; }
+.wave-strip.move.slow { animation-duration: 30s; }
+
+/* ---------- 画面全体を泳ぐアザラシ（勉強ツールUI風） ---------- */
+.swim-seal {
+  position: fixed; top: 0; left: 0; z-index: 90; pointer-events: none;
+  width: clamp(64px, 8vw, 118px); opacity: .42;
+  filter: drop-shadow(0 12px 22px rgba(7, 59, 76, .28));
+  will-change: transform;
+  animation: swim-cross 34s linear infinite;
+}
+@keyframes swim-cross {
+  0%   { transform: translate(-160px, 16vh) rotate(96deg); }
+  20%  { transform: translate(24vw, 34vh) rotate(82deg); }
+  40%  { transform: translate(48vw, 18vh) rotate(98deg); }
+  60%  { transform: translate(70vw, 40vh) rotate(110deg); }
+  80%  { transform: translate(88vw, 22vh) rotate(90deg); }
+  100% { transform: translate(118vw, 36vh) rotate(96deg); }
+}
+@media (prefers-reduced-motion: reduce) { .swim-seal { display: none; } }
+
+/* ---------- スクロールキュー ---------- */
+.scroll-cue { display: inline-flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .72rem; letter-spacing: .2em; color: var(--lagoon-100); font-family: var(--font-latin); }
+.scroll-cue .mouse { width: 24px; height: 38px; border: 2px solid currentColor; border-radius: 14px; position: relative; }
+.scroll-cue .mouse::after { content: ""; position: absolute; top: 7px; left: 50%; width: 3px; height: 7px; background: currentColor; border-radius: 2px; transform: translateX(-50%); animation: cue-dot 1.6s var(--ease) infinite; }
+@keyframes cue-dot { 0% { opacity: 0; transform: translate(-50%, 0); } 30% { opacity: 1; } 60% { opacity: 1; transform: translate(-50%, 10px); } 100% { opacity: 0; transform: translate(-50%, 12px); } }
+
+/* ---------- 図解SVGの「流れる」線（lp.jsが発火） ---------- */
+.flow-line { stroke-dasharray: 8 10; stroke-dashoffset: 0; animation: flow-dash 1.4s linear infinite; }
+@keyframes flow-dash { to { stroke-dashoffset: -36; } }
+.flow-node { opacity: .35; transition: opacity .5s var(--ease), filter .5s; }
+.flow-node.lit { opacity: 1; filter: drop-shadow(0 6px 14px rgba(255,122,89,.35)); }
+
+/* 動きを減らす */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .mask { opacity: 1 !important; transform: none !important; }
+  .anim-float, .anim-float-soft, .anim-sway, .wave-strip.move, .scroll-cue .mouse::after, .flow-line { animation: none !important; }
+}

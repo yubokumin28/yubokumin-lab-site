@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オープンデザイン — 成果が出るサイトの15の法則 | 遊牧民ラボ</title>
+<meta name="description" content="競合14社を6軸100点で分析し、結果につながる「15の原則」を導出。実装レベルで形にしたWeb制作のデモサイトです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/lp.css">
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><img src="../assets/seal/seal_medallion.png" alt="" aria-hidden="true"><span>遊牧民ラボ<small>YUBOKUMIN LAB</small></span></a>
+    <nav class="nav-links" aria-label="メインナビ">
+      <a href="../index.html">ホーム</a><a href="../index.html#tools">ツール</a><a href="#features">機能</a>
+      <a class="btn btn-primary nav-cta magnetic hoverable" href="../index.html#contact">声をかける</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- FV -->
+<section class="lp-hero" data-parallax-scene>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">06 / Design Principles</span>
+      <h1><span class="mask d1"><span>成果が出るサイトの、</span></span><br><span class="mask d2"><span><span class="accent">15</span>の法則。</span></span></h1>
+      <p class="lead reveal d2">「おしゃれ」だけでは問い合わせは増えない。競合14社を6つの軸で100点採点し、<strong>本当に結果につながる15の原則</strong>を抽出。それを実装レベルで形にしたデモサイトです。</p>
+      <div class="lp-chips reveal d3"><span class="chip">14社分析</span><span class="chip chip-coral">6軸100点採点</span><span class="chip chip-sun">2デザイン案</span></div>
+      <div class="hero-actions reveal d4"><a class="btn btn-primary btn-lg magnetic hoverable" href="#features">原則を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="lp-visual reveal scale-in d2" data-flow style="background:var(--grad-deep)">
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="14社の分析から15原則を導く流れ図">
+        <path class="flow-line" d="M180,110 H250" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M300,150 V230" stroke="#4fd3cc" stroke-width="4" fill="none"/>
+        <path class="flow-line" d="M340,270 H410" stroke="#ffc857" stroke-width="4" fill="none"/>
+        <!-- 14社グリッド -->
+        <g class="flow-node">
+          <rect x="30" y="60" width="20" height="20" rx="4" fill="#fdfbf6"/><rect x="56" y="60" width="20" height="20" rx="4" fill="#fdfbf6"/><rect x="82" y="60" width="20" height="20" rx="4" fill="#fdfbf6"/><rect x="108" y="60" width="20" height="20" rx="4" fill="#fdfbf6"/><rect x="134" y="60" width="20" height="20" rx="4" fill="#fdfbf6"/>
+          <rect x="30" y="86" width="20" height="20" rx="4" fill="#c9f1ee"/><rect x="56" y="86" width="20" height="20" rx="4" fill="#c9f1ee"/><rect x="82" y="86" width="20" height="20" rx="4" fill="#c9f1ee"/><rect x="108" y="86" width="20" height="20" rx="4" fill="#c9f1ee"/><rect x="134" y="86" width="20" height="20" rx="4" fill="#c9f1ee"/>
+          <rect x="30" y="112" width="20" height="20" rx="4" fill="#93e4de"/><rect x="56" y="112" width="20" height="20" rx="4" fill="#93e4de"/><rect x="82" y="112" width="20" height="20" rx="4" fill="#93e4de"/><rect x="108" y="112" width="20" height="20" rx="4" fill="#93e4de"/>
+        </g>
+        <text x="92" y="156" font-size="12" text-anchor="middle" fill="#eafaf8">競合 14社</text>
+        <!-- 分析 -->
+        <g class="flow-node"><circle cx="300" cy="270" r="44" fill="#129ca0"/><text x="300" y="282" font-size="28" text-anchor="middle">⚖️</text></g>
+        <text x="300" y="332" font-size="12" text-anchor="middle" fill="#eafaf8">6軸で採点</text>
+        <!-- 中間スコア -->
+        <g class="flow-node"><rect x="250" y="78" width="100" height="64" rx="10" fill="#073b4c" stroke="#4fd3cc" stroke-width="2"/>
+          <rect x="262" y="94" width="14" height="34" rx="3" fill="#ff7a59"/><rect x="282" y="104" width="14" height="24" rx="3" fill="#ffc857"/><rect x="302" y="88" width="14" height="40" rx="3" fill="#4fd3cc"/><rect x="322" y="100" width="14" height="28" rx="3" fill="#2f9e7d"/></g>
+        <!-- 15原則 -->
+        <g class="flow-node"><rect x="410" y="226" width="96" height="88" rx="12" fill="#fff" stroke="#ff7a59" stroke-width="3"/>
+          <text x="458" y="256" font-size="26" text-anchor="middle" font-weight="800" fill="#f0603d">15</text>
+          <text x="458" y="278" font-size="12" text-anchor="middle" fill="#0c2b33">原則</text>
+          <line x1="424" y1="290" x2="492" y2="290" stroke="#93e4de" stroke-width="3"/><line x1="424" y1="300" x2="478" y2="300" stroke="#93e4de" stroke-width="3"/></g>
+      </svg>
+    </div>
+  </div>
+  <div class="lp-divider"><svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C260,110 460,10 720,55 C1000,100 1240,20 1440,60 L1440,110 L0,110 Z" fill="var(--sand-50)"/></svg></div>
+</section>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">The challenge</span><h2 class="reveal d1">きれいなだけのサイトは、<br>売上を生まない。</h2></div>
+    <div class="problem-grid">
+      <div class="problem-card reveal d1"><span class="pc-no">01</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 13l3 3 7-8"/></svg></div><h3>見た目重視で成果が出ない</h3><p>デザインは良いのに問い合わせが来ない。「なぜ売れるか」の設計が抜けている。</p></div>
+      <div class="problem-card reveal d2"><span class="pc-no">02</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>何を真似ればいいか不明</h3><p>強い競合サイトの「勝ちパターン」が言語化されておらず、再現できない。</p></div>
+      <div class="problem-card reveal d3"><span class="pc-no">03</span><div class="pc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z"/></svg></div><h3>信頼の作り方を知らない</h3><p>実績の見せ方、料金の透明性、顔出し。信頼につながる要素が抜け落ちている。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 機能（=4カテゴリの原則） -->
+<section class="features" id="features" data-hscroll>
+  <div class="hscroll">
+    <div class="hscroll-head section-head"><span class="eyebrow reveal">The 15 principles</span><h2 class="reveal d1">横スクロールで、4カテゴリの原則。</h2></div>
+    <div class="hscroll-track">
+      <article class="feature-panel"><span class="fp-no">A</span><div class="fp-icon">🛡️</div><h3>信頼性シグナル</h3><p>代表の顔出し、実績の数値化、メディア掲載。「この人になら頼める」を作る要素群。</p><div class="fp-tag"><span class="chip">Trust</span></div></article>
+      <article class="feature-panel"><span class="fp-no">B</span><div class="fp-icon">🎯</div><h3>コンバージョン設計</h3><p>CTAの配置・文言・導線。訪問者を迷わせず、自然に問い合わせへ運ぶ設計。</p><div class="fp-tag"><span class="chip chip-coral">CV</span></div></article>
+      <article class="feature-panel"><span class="fp-no">C</span><div class="fp-icon">🔍</div><h3>SEO / コンテンツ</h3><p>検索で見つかり、読んで価値がある。集客の土台になるコンテンツ設計。</p><div class="fp-tag"><span class="chip chip-sun">SEO</span></div></article>
+      <article class="feature-panel"><span class="fp-no">D</span><div class="fp-icon">✨</div><h3>デザイン / UX</h3><p>第一印象と使いやすさ。美しさを「成果」に変換するための体験設計。</p><div class="fp-tag"><span class="chip">UX</span></div></article>
+    </div>
+    <div class="hscroll-progress"><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<!-- 実際の画面 -->
+<section class="section showcase">
+  <div class="wrap">
+    <div class="section-head center reveal"><span class="eyebrow">Screenshot</span><h2 class="reveal d1">これが、実際の画面。</h2><p class="lead reveal d2">15の原則を実装したデモサイト。信頼性・CV設計・SEO・UXを一枚で体現しています。</p></div>
+    <figure class="browser-frame reveal scale-in d1">
+      <div class="bf-bar"><span></span><span></span><span></span><em>open-design — demo</em></div>
+      <img src="../assets/shots/open-design.png" alt="オープンデザインのデモサイト画面" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="divider-deep lp-stats" data-parallax-scene>
+  <span class="wave" style="display:block"><svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C240,0 480,90 720,50 C960,10 1200,80 1440,40 L1440,0 L0,0 Z" fill="var(--bg)"/></svg></span>
+  <div class="wrap center" style="padding-block:var(--sp-5);position:relative;z-index:1">
+    <span class="eyebrow reveal" style="color:var(--lagoon-100)">By the numbers</span>
+    <h2 class="reveal d1" style="margin:.4em 0 1.4em">感覚ではなく、<br>分析で作る。</h2>
+    <div class="stat-row reveal d2">
+      <div class="stat"><div class="num" data-count="14" data-suffix="社"><span>0</span></div><div class="lbl">分析した競合</div></div>
+      <div class="stat"><div class="num" data-count="6"><span>0</span></div><div class="lbl">評価の軸</div></div>
+      <div class="stat"><div class="num" data-count="15"><span>0</span></div><div class="lbl">抽出した原則</div></div>
+      <div class="stat"><div class="num" data-count="2" data-suffix="案"><span>0</span></div><div class="lbl">デザイン提案</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 回遊 -->
+<section class="section next-tools">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow reveal">Next island</span><h2 class="reveal d1">次の島へ渡る。</h2></div>
+    <div class="next-grid">
+      <a class="tool-card reveal d1 hoverable" data-tilt href="design-kit.html"><span class="tc-no">05 / DESIGN</span><h3>美しさの設計図を盗む。</h3><div class="tc-tag">design-language 抽出</div><p>憧れサイトのCSSから色・余白・フォントを自動抽出。</p><div class="tc-foot"><span class="chip">自動解析</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d2 hoverable" data-tilt href="construction.html"><span class="tc-no">04 / 3D SITE</span><h3>建設業に、AIの風を。</h3><div class="tc-tag">アザラシ建設 3D</div><p>3Dロボットアームが回る建設業向けLPの実例。</p><div class="tc-foot"><span class="chip">3D / Spline</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="tool-card reveal d3 hoverable" data-tilt href="sns.html"><span class="tc-no">02 / SOCIAL</span><h3>朝7時、勝手に発信。</h3><div class="tc-tag">SNS進捗発信</div><p>進捗をAIがX向けに書き起こし自動投稿。承認はLINEで一言。</p><div class="tc-foot"><span class="chip">全自動</span><span class="tc-go">渡る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap"><div class="footer-bottom" style="border:none;margin:0;padding:0">
+    <a href="../index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-family:var(--font-display);font-weight:700"><img src="../assets/seal/seal_medallion.png" alt="" style="width:36px;height:36px;border-radius:50%">遊牧民ラボに戻る</a>
+    <span>© 2026 Yubokumin Lab</span>
+  </div></div>
+</footer>
+
+<script src="../js/core.js" defer></script>
+<script src="../js/smooth.js" defer></script>
+<script src="../js/cursor.js" defer></script>
+<script src="../js/lp.js" defer></script>
+</body>
+</html>
